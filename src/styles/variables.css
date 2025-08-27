@@ -1,0 +1,21 @@
+:root {
+  --main: #101828;
+  --text: #475467;
+  --white: #fff;
+  --inputs: #f7f7f7;
+  --badges: #f2f4f7;
+  --gray: #6c717b;
+  --gray-light: #dadde1;
+  --button: #e44848;
+  --button-hover: #d84343;
+  --rating: #ffc531;
+
+  --font-family: "Inter", sans-serif;
+  --size-main: 16px;
+  --size-h1: 48px;
+  --size-h2: 24px;
+  --size-h3: 20px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semi-bold: 600;
+}
