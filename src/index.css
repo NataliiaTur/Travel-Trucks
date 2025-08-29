@@ -6,11 +6,6 @@
   box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -19,6 +14,8 @@ html {
 body {
   padding: 0;
   margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #fff;
 }
 
 ol,
@@ -46,4 +43,11 @@ select {
   border: none;
   font: inherit;
   outline: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 64px;
+  width: 100%;
 }

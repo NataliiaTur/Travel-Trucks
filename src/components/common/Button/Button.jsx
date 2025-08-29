@@ -6,6 +6,7 @@ export function Button({
   onClick,
   type = "button",
   disabled = false,
+  className = "",
 }) {
   return (
     <div>
@@ -13,7 +14,7 @@ export function Button({
         type={type}
         onClick={onClick}
         disabled={disabled}
-        className={css.button}
+        className={`${css.button} ${className}`}
       >
         {children}
       </button>
