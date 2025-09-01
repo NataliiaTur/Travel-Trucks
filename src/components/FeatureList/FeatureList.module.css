@@ -1,0 +1,14 @@
+.featureList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 100px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  background-color: #f2f4f7;
+  border-radius: 100px;
+}

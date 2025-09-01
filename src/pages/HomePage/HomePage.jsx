@@ -1,8 +1,15 @@
 import React from "react";
 import { Button } from "../../components/common/Button/Button.jsx";
 import css from "./HomePage.module.css";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/catalog");
+  };
+
   return (
     <div className={css.home}>
       <div className="container">
@@ -10,7 +17,9 @@ function HomePage() {
         <p className={css.homeText}>
           You can find everything you want in our catalog
         </p>
-        <Button className={css.homeButton}>View Now</Button>
+        <Button className={css.homeButton} onClick={handleNavigate}>
+          View Now
+        </Button>
       </div>
     </div>
   );
