@@ -1,5 +1,6 @@
 import { useState } from "react";
 import css from "./BookingForm.module.css";
+import Button from "../../components/common/Button/Button.jsx";
 
 function BookingForm({ camperId, onSubmit }) {
   const [formData, setFormData] = useState({
@@ -66,7 +67,10 @@ function BookingForm({ camperId, onSubmit }) {
           onChange={handleChange}
         />
 
-        <button type="submit">Send</button>
+        {/* <button className={css.featureButton} type="submit">
+          Send
+        </button> */}
+        <Button className={css.featureButton}>Send</Button>
       </form>
     </div>
   );

@@ -9,16 +9,14 @@ export function Button({
   className = "",
 }) {
   return (
-    <div>
-      <button
-        type={type}
-        onClick={onClick}
-        disabled={disabled}
-        className={`${css.button} ${className}`}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={`${css.button} ${className}`}
+    >
+      {children}
+    </button>
   );
 }
 
