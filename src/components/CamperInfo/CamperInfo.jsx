@@ -1,4 +1,5 @@
 import css from "./CamperInfo.module.css";
+import Icon from "../common/Icon/Icon.jsx";
 
 function CamperInfo({ camper, showPrice }) {
   if (!camper) return null;
@@ -16,15 +17,23 @@ function CamperInfo({ camper, showPrice }) {
 
         <div className={css.camperInfoDetails}>
           <div className={css.camperInfoRating}>
-            {/* Тут буде іконка зірки */}
-            <span>⭐</span>
+            <Icon
+              id={"icon-star"}
+              width={16}
+              height={16}
+              className={css.camperInfoStar}
+            />
             <span>{camper.rating}</span>
             <span>({reviewsCount} Reviews)</span>
           </div>
 
           <div className={css.camperInfoLocation}>
-            {/* Тут буде іконка мапи */}
-            <span>📍</span>
+            <Icon
+              id={"icon-city-map-black"}
+              width={20}
+              height={20}
+              className={css.camperInfoMap}
+            />
             <span>{camper.location}</span>
           </div>
         </div>

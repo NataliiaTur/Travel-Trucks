@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
-import sprite from "../../assets/icons/icons.svg";
+import sprite from "../../../public/icons.svg";
 import clsx from "clsx";
 
 function Navigation() {
