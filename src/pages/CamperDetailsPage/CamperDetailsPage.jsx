@@ -1,38 +1,45 @@
+import css from "./CamperDetailsPage.module.css";
+import { useParams } from "react-router-dom";
 import Features from "../../components/Features/Features.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCampersError,
+  selectCampersLoading,
+  selectCurrentCamper,
+} from "../../redux/selectors.js";
+import { useEffect } from "react";
+import { fetchCamperById } from "../../redux/campersSlice.js";
 
 function CamperDetailsPage() {
-  // Тестові дані з вашого прикладу
-  const testCamper = {
-    id: "1",
-    name: "Road Bear C 23-25",
-    form: "alcove",
-    length: "7.3m",
-    width: "2.65m",
-    height: "3.65m",
-    tank: "208l",
-    consumption: "30l/100km",
-    transmission: "automatic",
-    engine: "diesel",
-    AC: true,
-    bathroom: true,
-    kitchen: false,
-    TV: true,
-    radio: true,
-    refrigerator: false,
-    microwave: true,
-    gas: false,
-    water: true,
-  };
+  const { id } = useParams();
+  const dispatch = useDispatch();
+
+  const currentCamper = useSelector(selectCurrentCamper);
+  const isLoading = useSelector(selectCampersLoading);
+  const error = useSelector(selectCampersError);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchCamperById(id));
+    }
+  }, [dispatch, id]);
 
   const handleBookingSubmit = (formData) => {
     console.log("Booking data:", formData);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error...</div>;
+  if (!currentCamper) return <div>Camper not found</div>;
+
   return (
-    <div>
+    <div className={css.camperDetailsPage}>
       <div className="container">
-        <h1>Camper Details Page</h1>
-        <p>Це сторінка деталей окремого кемпера</p>
-        <Features camper={testCamper} onBookingSubmit={handleBookingSubmit} />
+        <h2 className={css.camperDetailsPageTitle}>{currentCamper.name}</h2>
+        <Features
+          camper={currentCamper}
+          onBookingSubmit={handleBookingSubmit}
+        />
       </div>
     </div>
   );
