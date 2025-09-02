@@ -42,7 +42,6 @@ function Features({ camper, onBookingSubmit }) {
           </div>
         </div>
       </div>
-
       {/* Правий блок з формою */}
       <BookingForm camperId={camper.id} onSubmit={onBookingSubmit} />
     </div>

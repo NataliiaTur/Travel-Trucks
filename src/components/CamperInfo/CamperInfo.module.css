@@ -1,0 +1,36 @@
+.camperInfo {
+  margin-bottom: 28px;
+}
+
+.camperInfoTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  padding-bottom: 8px;
+}
+
+.camperInfoDetails {
+  display: flex;
+  gap: 16px;
+}
+
+.camperInfoRating {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  margin-bottom: 16px;
+}
+
+.camperInfoLocation {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.camperInfoPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+}

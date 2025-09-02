@@ -9,6 +9,7 @@ import {
 } from "../../redux/selectors.js";
 import { useEffect } from "react";
 import { fetchCamperById } from "../../redux/campersSlice.js";
+import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 
 function CamperDetailsPage() {
   const { id } = useParams();
@@ -35,7 +36,8 @@ function CamperDetailsPage() {
   return (
     <div className={css.camperDetailsPage}>
       <div className="container">
-        <h2 className={css.camperDetailsPageTitle}>{currentCamper.name}</h2>
+        <CamperInfo camper={currentCamper} showPrice={true} />
+        {/* <h2 className={css.camperDetailsPageTitle}>{currentCamper.name}</h2> */}
         <Features
           camper={currentCamper}
           onBookingSubmit={handleBookingSubmit}
