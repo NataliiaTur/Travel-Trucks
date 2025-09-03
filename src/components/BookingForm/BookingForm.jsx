@@ -25,7 +25,7 @@ function BookingForm({ camperId, onSubmit }) {
   };
 
   return (
-    <div className={css.featureForm}>
+    <section className={css.featureForm}>
       <h3 className={css.featureFormTitle}>Book your campervan now</h3>
       <p className={css.featureFormText}>
         Stay connected! We are always ready to help you.
@@ -72,7 +72,7 @@ function BookingForm({ camperId, onSubmit }) {
         </button> */}
         <Button className={css.featureButton}>Send</Button>
       </form>
-    </div>
+    </section>
   );
 }
 

@@ -12,7 +12,7 @@ function CamperInfo({ camper, showPrice }) {
 
   return (
     <div className={css.camperInfo}>
-      <div className="container">
+      <div>
         <h2 className={css.camperInfoTitle}>{camper.name}</h2>
 
         <div className={css.camperInfoDetails}>

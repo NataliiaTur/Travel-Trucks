@@ -16,16 +16,16 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background-color: #fff;
+  color: #475467;
 }
 
 ol,
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
-picture,
-img,
-svg {
+img {
   display: block;
   max-width: 100%;
 }

@@ -1,0 +1,18 @@
+.galleryRow {
+  display: flex;
+  gap: 48px;
+  justify-content: flex-start;
+  margin-bottom: 28px;
+  height: 312px;
+}
+
+.galleryItem {
+  width: 292px;
+  height: 100%;
+}
+
+.galleryItemImage {
+  height: 100%;
+  object-fit: none;
+  border-radius: 10px;
+}

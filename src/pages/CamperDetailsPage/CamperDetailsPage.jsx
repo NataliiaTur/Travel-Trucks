@@ -10,6 +10,8 @@ import {
 import { useEffect } from "react";
 import { fetchCamperById } from "../../redux/campersSlice.js";
 import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
+import Gallery from "../../components/Gallery/Gallery.jsx";
+import Description from "../../components/Description/Description.jsx";
 
 function CamperDetailsPage() {
   const { id } = useParams();
@@ -34,16 +36,18 @@ function CamperDetailsPage() {
   if (!currentCamper) return <div>Camper not found</div>;
 
   return (
-    <div className={css.camperDetailsPage}>
+    <section className={css.camperDetailsPage}>
       <div className="container">
         <CamperInfo camper={currentCamper} showPrice={true} />
-        {/* <h2 className={css.camperDetailsPageTitle}>{currentCamper.name}</h2> */}
+
+        <Gallery images={currentCamper.gallery} />
+        <Description text={currentCamper.description} />
         <Features
           camper={currentCamper}
           onBookingSubmit={handleBookingSubmit}
         />
       </div>
-    </div>
+    </section>
   );
 }
 

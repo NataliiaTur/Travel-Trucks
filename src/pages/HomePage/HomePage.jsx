@@ -11,7 +11,7 @@ function HomePage() {
   };
 
   return (
-    <div className={css.home}>
+    <section className={css.home}>
       <div className="container">
         <h1 className={css.homeTitle}>Campers of your dreams</h1>
         <p className={css.homeText}>
@@ -21,7 +21,7 @@ function HomePage() {
           View Now
         </Button>
       </div>
-    </div>
+    </section>
   );
 }
 
