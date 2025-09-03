@@ -7,15 +7,17 @@ import {
   selectCampersLoading,
   selectCurrentCamper,
 } from "../../redux/selectors.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCamperById } from "../../redux/campersSlice.js";
 import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 import Gallery from "../../components/Gallery/Gallery.jsx";
 import Description from "../../components/Description/Description.jsx";
+import Tabs from "../../components/Tabs/Tabs.jsx";
 
 function CamperDetailsPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [activeTab, setActiveTab] = useState("features");
 
   const currentCamper = useSelector(selectCurrentCamper);
   const isLoading = useSelector(selectCampersLoading);
@@ -39,13 +41,20 @@ function CamperDetailsPage() {
     <section className={css.camperDetailsPage}>
       <div className="container">
         <CamperInfo camper={currentCamper} showPrice={true} />
-
         <Gallery images={currentCamper.gallery} />
         <Description text={currentCamper.description} />
-        <Features
-          camper={currentCamper}
-          onBookingSubmit={handleBookingSubmit}
-        />
+
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab}>
+          {activeTab === "features" && (
+            <Features
+              camper={currentCamper}
+              onBookingSubmit={handleBookingSubmit}
+            />
+          )}
+          {activeTab === "reviews" && (
+            <div>Reviews content (створимо пізніше)</div>
+          )}
+        </Tabs>
       </div>
     </section>
   );

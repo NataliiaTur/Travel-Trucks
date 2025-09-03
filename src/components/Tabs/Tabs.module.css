@@ -1,0 +1,28 @@
+.tabButtons {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #dadde1;
+}
+
+.tabButton {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  border: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.tabButton.active::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85px;
+  height: 5px;
+  background: #e44848;
+  top: 47px;
+}

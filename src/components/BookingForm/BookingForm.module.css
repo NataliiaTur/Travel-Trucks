@@ -2,8 +2,14 @@
   border: 1px solid #dadde1;
   border-radius: 10px;
   padding: 44px 57px;
-  width: 641px;
-  height: 588px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
 }
 
 .featureFormTitle {
@@ -30,22 +36,24 @@
 .featureFormField input {
   border-radius: 12px;
   padding: 18px;
-  width: 527px;
-  height: 100%;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
   background-color: #f7f7f7;
 }
 
 .featureFormField textarea {
   border-radius: 10px;
   padding: 18px;
-  width: 527px;
+  width: 100%;
   height: 118px;
   background-color: #f7f7f7;
   margin-bottom: 24px;
+  resize: none;
+  box-sizing: border-box;
 }
 
 .featureButton {
   display: block;
   margin: 0 auto;
-  
 }

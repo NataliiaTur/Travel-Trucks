@@ -1,14 +1,15 @@
 .feature {
   display: flex;
   gap: 40px;
+  padding-top: 40px;
 }
 
 .featureDetails {
   background-color: #f7f7f7;
   border-radius: 10px;
   padding: 44px 52px;
-  width: 631px;
-  height: 588px;
+  flex: 5;
+  min-width: 300px;
 }
 
 .featuresTitle {
