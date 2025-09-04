@@ -13,6 +13,7 @@ import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 import Gallery from "../../components/Gallery/Gallery.jsx";
 import Description from "../../components/Description/Description.jsx";
 import Tabs from "../../components/Tabs/Tabs.jsx";
+import Reviews from "../../components/Reviews/Reviews.jsx";
 
 function CamperDetailsPage() {
   const { id } = useParams();
@@ -52,7 +53,10 @@ function CamperDetailsPage() {
             />
           )}
           {activeTab === "reviews" && (
-            <div>Reviews content (створимо пізніше)</div>
+            <Reviews
+              camper={currentCamper}
+              onBookingSubmit={handleBookingSubmit}
+            />
           )}
         </Tabs>
       </div>
