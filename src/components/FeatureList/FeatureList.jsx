@@ -1,6 +1,7 @@
 import css from "./FeatureList.module.css";
+import clsx from "clsx";
 
-function FeatureList({ camper }) {
+function FeatureList({ camper, className }) {
   if (!camper) return null;
 
   const features = [
@@ -28,7 +29,7 @@ function FeatureList({ camper }) {
   const availableFeatures = features.filter((feature) => feature.show);
 
   return (
-    <div className={css.featureList}>
+    <div className={clsx(css.featureList, className)}>
       {availableFeatures.map((feature) => (
         <div key={feature.key} className={css.featureItem}>
           {/* Тут буде іконка */}

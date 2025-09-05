@@ -1,17 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { campersApi } from "../services/campersApi.js";
-
-export const fetchCamperById = createAsyncThunk(
-  "campers/fetchCamperById",
-  async (camperId, thunkAPI) => {
-    try {
-      const response = await campersApi.getCamperById(camperId);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCamperById, fetchCampers } from "../redux/operations.js";
 
 const initialState = {
   items: [],
@@ -30,6 +18,19 @@ const camperSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchCampers.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchCampers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload.items || action.payload;
+      })
+      .addCase(fetchCampers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
       .addCase(fetchCamperById.pending, (state) => {
         state.isLoading = true;
         state.error = null;

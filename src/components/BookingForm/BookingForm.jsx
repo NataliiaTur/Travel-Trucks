@@ -67,9 +67,6 @@ function BookingForm({ camperId, onSubmit }) {
           onChange={handleChange}
         />
 
-        {/* <button className={css.featureButton} type="submit">
-          Send
-        </button> */}
         <Button className={css.featureButton}>Send</Button>
       </form>
     </section>

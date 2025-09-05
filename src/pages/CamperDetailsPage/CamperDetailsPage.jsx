@@ -8,7 +8,7 @@ import {
   selectCurrentCamper,
 } from "../../redux/selectors.js";
 import { useEffect, useState } from "react";
-import { fetchCamperById } from "../../redux/campersSlice.js";
+import { fetchCamperById } from "../../redux/operations.js";
 import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 import Gallery from "../../components/Gallery/Gallery.jsx";
 import Description from "../../components/Description/Description.jsx";
