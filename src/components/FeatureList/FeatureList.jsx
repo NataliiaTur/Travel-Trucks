@@ -1,38 +1,28 @@
 import css from "./FeatureList.module.css";
 import clsx from "clsx";
+import Icon from "../../components/common/Icon/Icon.jsx";
+import { featuresConfig } from "../../constants/featuresConfig.js";
 
 function FeatureList({ camper, className }) {
   if (!camper) return null;
 
-  const features = [
-    {
-      key: "transmission",
-      label: camper.transmission === "automatic" ? "Automatic" : "Manual",
-      show: !!camper.transmission,
-    },
-    { key: "AC", label: "AC", show: camper.AC },
-    {
-      key: "engine",
-      label: camper.engine === "petrol" ? "Petrol" : "Diesel",
-      show: !!camper.engine,
-    },
-    { key: "bathroom", label: "Bathroom", show: camper.bathroom },
-    { key: "kitchen", label: "Kitchen", show: camper.kitchen },
-    { key: "TV", label: "TV", show: camper.TV },
-    { key: "radio", label: "Radio", show: camper.radio },
-    { key: "refrigerator", label: "Refrigerator", show: camper.refrigerator },
-    { key: "microwave", label: "Microwave", show: camper.microwave },
-    { key: "gas", label: "Gas", show: camper.gas },
-    { key: "water", label: "Water", show: camper.water },
-  ];
-
-  const availableFeatures = features.filter((feature) => feature.show);
+  const availableFeatures = featuresConfig
+    .filter((feature) => feature.show(camper))
+    .map((feature) => ({
+      ...feature,
+      label: feature.getLabel(camper),
+    }));
 
   return (
     <div className={clsx(css.featureList, className)}>
       {availableFeatures.map((feature) => (
         <div key={feature.key} className={css.featureItem}>
-          {/* Тут буде іконка */}
+          <Icon
+            id={feature.icon}
+            width={20}
+            height={20}
+            className={css.featureIcon}
+          />
           <span>{feature.label}</span>
         </div>
       ))}
