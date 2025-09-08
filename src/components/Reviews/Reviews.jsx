@@ -42,7 +42,7 @@ function Reviews({ camper, onBookingSubmit }) {
           </li>
         ))}
       </ul>
-      {/* Правий блок з формою */}
+
       <BookingForm
         camperId={camper.id}
         onSubmit={onBookingSubmit}

@@ -8,12 +8,12 @@ function Features({ camper, onBookingSubmit }) {
 
   return (
     <div className={css.feature}>
-      {/* Лівий блок з зручностями та деталями */}
+     
       <div className={css.featureDetails}>
-        {/* Список зручностей */}
+       
         <FeatureList camper={camper} />
 
-        {/* Vehicle details */}
+      
         <h4 className={css.featuresTitle}>Vehicle details</h4>
         <div className={css.featureVehicleDetails}>
           <div>
@@ -42,7 +42,7 @@ function Features({ camper, onBookingSubmit }) {
           </div>
         </div>
       </div>
-      {/* Правий блок з формою */}
+
       <BookingForm camperId={camper.id} onSubmit={onBookingSubmit} />
     </div>
   );

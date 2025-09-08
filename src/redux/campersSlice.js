@@ -1,11 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCamperById, fetchCampers } from "../redux/operations.js";
+import {
+  fetchCamperById,
+  fetchCampers,
+  fetchFilteredCampers,
+} from "../redux/operations.js";
 
 const initialState = {
   items: [],
   currentCamper: null,
   isLoading: false,
   error: null,
+
+  filters: {
+    location: "",
+    bodyType: "",
+    features: [],
+  },
+
+  page: 1,
+  hasMore: true,
 };
 
 const camperSlice = createSlice({
@@ -14,6 +27,40 @@ const camperSlice = createSlice({
   reducers: {
     setLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+
+    setLocationFilter: (state, action) => {
+      state.filters.location = action.payload;
+    },
+    setBodyTypeFilter: (state, action) => {
+      state.filters.bodyType = action.payload;
+    },
+    toggleFeatureFilter: (state, action) => {
+      const feature = action.payload;
+      const index = state.filters.features.indexOf(feature);
+
+      if (index === -1) {
+        state.filters.features.push(feature);
+      } else {
+        state.filters.features.splice(index, 1);
+      }
+    },
+    clearFilters: (state) => {
+      state.filters = {
+        location: "",
+        bodyType: "",
+        features: [],
+      };
+    },
+    resetPagination: (state) => {
+      state.page = 1;
+      state.hasMore = true;
+    },
+    incrementPage: (state) => {
+      state.page += 1;
+    },
+    setHasMore: (state, action) => {
+      state.hasMore = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,9 +89,43 @@ const camperSlice = createSlice({
       .addCase(fetchCamperById.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      .addCase(fetchFilteredCampers.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { data, isLoadMore, hasMore, page } = action.payload;
+
+        if (isLoadMore) {
+          // Додаємо до існуючих результатів (Load More)
+          state.items = [...state.items, ...data];
+          state.page = page;
+        } else {
+          state.items = data;
+          state.page = 1;
+        }
+
+        state.hasMore = hasMore;
+      })
+      .addCase(fetchFilteredCampers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { setLoading } = camperSlice.actions;
+export const {
+  setLoading,
+  setLocationFilter,
+  setBodyTypeFilter,
+  toggleFeatureFilter,
+  clearFilters,
+  resetPagination,
+  clearCampers,
+  incrementPage,
+  setHasMore,
+} = camperSlice.actions;
 export default camperSlice.reducer;

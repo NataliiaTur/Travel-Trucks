@@ -61,16 +61,13 @@
 }
 
 .smallCardDescription {
-  white-space: nowrap; /* весь текст в один рядок */
-  overflow: hidden; /* приховує зайве */
-  text-overflow: ellipsis; /* додає ... */
-  max-width: 525px; /* обов’язково вкажи ширину */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 525px;
   margin-bottom: 24px !important;
 }
 
 .smallCardFeatureList:last-child {
   margin-bottom: 24px !important;
-}
-
-.smallCardButton {
 }

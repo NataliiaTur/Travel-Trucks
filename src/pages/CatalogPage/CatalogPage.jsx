@@ -9,6 +9,7 @@ import {
 } from "../../redux/selectors.js";
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/operations.js";
+import Filters from "../../components/Filters/Filters.jsx";
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -39,17 +40,22 @@ function CatalogPage() {
   return (
     <section className={css.catalogPage}>
       <div className="container">
-        {campers && campers.length > 0 ? (
-          campers.map((camper) => (
-            <CamperSmallCard
-              key={camper.id}
-              camper={camper}
-              onShowMore={handleShowMore}
-            />
-          ))
-        ) : (
-          <div> No campers found </div>
-        )}
+        <div className={css.catalogContent}>
+          <Filters />
+          <div className={css.campersSection}>
+            {campers && campers.length > 0 ? (
+              campers.map((camper) => (
+                <CamperSmallCard
+                  key={camper.id}
+                  camper={camper}
+                  onShowMore={handleShowMore}
+                />
+              ))
+            ) : (
+              <div> No campers found </div>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

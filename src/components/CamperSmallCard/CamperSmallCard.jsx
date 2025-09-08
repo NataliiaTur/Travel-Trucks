@@ -24,7 +24,7 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
         <div className={css.smallCardInfoContainer}>
           <div className={css.camperSmallCardCamperInfo}>
             <div className={css.camperSmallCardWrapperTitlePrice}>
-              <h3 className={css.camperSmallCardName}>{camper.name}</h3>
+              <h2 className={css.camperSmallCardName}>{camper.name}</h2>
               <div className={css.camperSmallCardPrice}>
                 €{camper.price.toFixed(2)}
               </div>

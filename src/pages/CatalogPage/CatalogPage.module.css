@@ -2,3 +2,14 @@
   padding-top: 60px;
   padding-bottom: 52px;
 }
+
+.catalogContent {
+  display: flex;
+  flex-direction: row;
+  gap: 58px;
+  align-items: flex-start;
+}
+
+.campersSection {
+  flex: 1;
+}
