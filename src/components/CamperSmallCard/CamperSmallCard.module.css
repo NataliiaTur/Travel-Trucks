@@ -71,3 +71,7 @@
 .smallCardFeatureList:last-child {
   margin-bottom: 24px !important;
 }
+
+.smallCardButton::hover {
+  background-color: #d84343;
+}

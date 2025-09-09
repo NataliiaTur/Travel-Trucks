@@ -18,3 +18,7 @@
   width: 156px;
   height: 56px;
 }
+
+.searchButton::hover {
+  background-color: #d84343;
+}

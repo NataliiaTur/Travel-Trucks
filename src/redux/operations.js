@@ -57,7 +57,7 @@ export const fetchFilteredCampers = createAsyncThunk(
         data,
         isLoadMore,
         hasMore: data.length > 0,
-        page,
+        page: isLoadMore ? page : 1,
       };
     } catch (error) {
       console.error("Fetch filtered campers error:", error);

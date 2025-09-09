@@ -100,10 +100,9 @@ const camperSlice = createSlice({
       })
       .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { data, isLoadMore, hasMore, page } = action.payload;
+        const { data, isLoadMore, page } = action.payload;
 
         if (isLoadMore) {
-          // Додаємо до існуючих результатів (Load More)
           state.items = [...state.items, ...data];
           state.page = page;
         } else {
@@ -111,7 +110,7 @@ const camperSlice = createSlice({
           state.page = 1;
         }
 
-        state.hasMore = hasMore;
+        state.hasMore = data.length === 4;
       })
       .addCase(fetchFilteredCampers.rejected, (state, action) => {
         state.isLoading = false;

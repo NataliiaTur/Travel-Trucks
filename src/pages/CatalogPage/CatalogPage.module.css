@@ -12,4 +12,26 @@
 
 .campersSection {
   flex: 1;
+
+  margin-bottom: 28px;
+}
+
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.loadMoreButton {
+  width: 145px;
+  height: 56px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #101828;
+  background-color: transparent !important;
+  border: 1px solid #dadde1 !important;
+}
+
+.loadMoreButton::hover {
+  border: 1px solid #d84343 !important;
 }

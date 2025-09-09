@@ -6,10 +6,14 @@ import {
   selectCampers,
   selectCampersError,
   selectCampersLoading,
+  selectCurrentPage,
+  selectFilters,
+  selectHasMore,
 } from "../../redux/selectors.js";
 import { useEffect } from "react";
-import { fetchCampers } from "../../redux/operations.js";
+import { fetchCampers, fetchFilteredCampers } from "../../redux/operations.js";
 import Filters from "../../components/Filters/Filters.jsx";
+import Button from "../../components/common/Button/Button.jsx";
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -18,20 +22,33 @@ function CatalogPage() {
   const campers = useSelector(selectCampers);
   const isLoading = useSelector(selectCampersLoading);
   const error = useSelector(selectCampersError);
+  const hasMore = useSelector(selectHasMore);
+  const currentPage = useSelector(selectCurrentPage);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    dispatch(fetchCampers());
+    dispatch(
+      fetchFilteredCampers({
+        filters: { location: "", bodyType: "", features: [] },
+        page: 1,
+        isLoadMore: false,
+      })
+    );
   }, [dispatch]);
-
-  console.log("Campers from Redux:", campers);
 
   const handleShowMore = (camperId) => {
     navigate(`/catalog/${camperId}`);
   };
 
-  if (isLoading) {
-    return <div> Loading ...</div>;
-  }
+  const handleLoadMore = () => {
+    dispatch(
+      fetchFilteredCampers({
+        filters,
+        page: currentPage + 1,
+        isLoadMore: true,
+      })
+    );
+  };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -42,17 +59,36 @@ function CatalogPage() {
       <div className="container">
         <div className={css.catalogContent}>
           <Filters />
+
           <div className={css.campersSection}>
-            {campers && campers.length > 0 ? (
-              campers.map((camper) => (
-                <CamperSmallCard
-                  key={camper.id}
-                  camper={camper}
-                  onShowMore={handleShowMore}
-                />
-              ))
+            {isLoading && campers.length === 0 ? (
+              <div>Loading...</div>
             ) : (
-              <div> No campers found </div>
+              <>
+                {campers && campers.length > 0 ? (
+                  campers.map((camper) => (
+                    <CamperSmallCard
+                      key={camper.id}
+                      camper={camper}
+                      onShowMore={handleShowMore}
+                    />
+                  ))
+                ) : (
+                  <div> No campers found </div>
+                )}
+
+                {hasMore && (
+                  <div className={css.loadMoreContainer}>
+                    <Button
+                      onClick={handleLoadMore}
+                      disabled={isLoading}
+                      className={css.loadMoreButton}
+                    >
+                      {isLoading ? "Loading..." : "Load More"}
+                    </Button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
