@@ -1,27 +1,7 @@
 // src/components/Filters/VehicleEquipment/VehicleEquipment.jsx
-import { EQUIPMENT_FEATURES } from "../../../utils/queryParams";
+import { EQUIPMENT_CONFIG } from "../../../utils/queryParams.js";
 import Icon from "../../common/Icon/Icon.jsx";
 import css from "./VehicleEquipment.module.css";
-
-const EQUIPMENT_CONFIG = [
-  { key: EQUIPMENT_FEATURES.AC, label: "AC", icon: "icon-wind" },
-  { key: EQUIPMENT_FEATURES.BATHROOM, label: "Bathroom", icon: "icon-shower" },
-  { key: EQUIPMENT_FEATURES.KITCHEN, label: "Kitchen", icon: "icon-cup-hot" },
-  { key: EQUIPMENT_FEATURES.TV, label: "TV", icon: "icon-tv" },
-  { key: EQUIPMENT_FEATURES.RADIO, label: "Radio", icon: "icon-radios" },
-  {
-    key: EQUIPMENT_FEATURES.REFRIGERATOR,
-    label: "Refrigerator",
-    icon: "icon-fridge",
-  },
-  {
-    key: EQUIPMENT_FEATURES.MICROWAVE,
-    label: "Microwave",
-    icon: "icon-microwave",
-  },
-  { key: EQUIPMENT_FEATURES.GAS, label: "Gas", icon: "icon-gasStove" },
-  { key: EQUIPMENT_FEATURES.WATER, label: "Water", icon: "icon-water" },
-];
 
 const VehicleEquipment = ({ selectedFeatures, onFeatureToggle }) => {
   return (

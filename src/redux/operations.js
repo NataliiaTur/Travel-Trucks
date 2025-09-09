@@ -39,10 +39,15 @@ export const fetchFilteredCampers = createAsyncThunk(
         dispatch(resetPagination());
       }
 
+      console.log("=== DEBUG INFO ===");
+      console.log("Raw filters object:", filters);
+      console.log("filters.features:", filters.features);
+      console.log("filters.features length:", filters.features?.length);
+
       const params = buildQueryParams(filters, page);
       console.log("API Request params:", params);
 
-      const response = await campersApi.get("/campers", { params });
+      const response = await campersApi.getCampers(params);
 
       const data = Array.isArray(response.data)
         ? response.data

@@ -6,11 +6,6 @@ import Button from "../common/Button/Button.jsx";
 import Icon from "../common/Icon/Icon.jsx";
 
 export const CamperSmallCard = ({ camper, onShowMore }) => {
-  console.log("Camper data:", camper);
-  console.log("Gallery data:", camper.gallery);
-  console.log("Description:", camper.description);
-  console.log("Price:", camper.price);
-
   const reviewsCount = camper.reviews ? camper.reviews.length : 0;
   return (
     <div className={css.camperSmallCard}>

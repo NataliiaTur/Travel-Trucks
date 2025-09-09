@@ -1,27 +1,16 @@
-// src/components/Filters/VehicleType/VehicleType.jsx
-import { BODY_TYPES } from "../../../utils/queryParams";
+import { VEHICLE_TYPES } from "../../../utils/queryParams.js";
 import Icon from "../../common/Icon/Icon.jsx";
 import css from "./VehicleType.module.css";
 
-const VEHICLE_TYPES = [
-  {
-    key: BODY_TYPES.PANEL_TRUCK,
-    label: "Van",
-    icon: "icon-van",
-  },
-  {
-    key: BODY_TYPES.FULLY_INTEGRATED,
-    label: "Fully Integrated",
-    icon: "icon-fullyIntegrated",
-  },
-  {
-    key: BODY_TYPES.ALCOVE,
-    label: "Alcove",
-    icon: "icon-alcove",
-  },
-];
-
 const VehicleType = ({ selectedType, onTypeChange }) => {
+  const handleTypeChange = (newType) => {
+    if (selectedType === newType) {
+      onTypeChange("");
+    } else {
+      onTypeChange(newType);
+    }
+  };
+
   return (
     <div className={css.typeBlock}>
       <h2 className={css.typeTitle}>Vehicle type</h2>
@@ -36,10 +25,10 @@ const VehicleType = ({ selectedType, onTypeChange }) => {
             }`}
           >
             <input
-              type="radio"
+              type="checkbox"
               name="vehicleType"
               checked={selectedType === key}
-              onChange={() => onTypeChange(key)}
+              onChange={() => handleTypeChange(key)}
               className={css.hiddenRadio}
             />
             <div className={css.typeContent}>

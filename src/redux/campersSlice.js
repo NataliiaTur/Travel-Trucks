@@ -56,6 +56,9 @@ const camperSlice = createSlice({
       state.page = 1;
       state.hasMore = true;
     },
+    clearCampers: (state) => {
+      state.items = [];
+    },
     incrementPage: (state) => {
       state.page += 1;
     },
@@ -128,4 +131,5 @@ export const {
   incrementPage,
   setHasMore,
 } = camperSlice.actions;
+
 export default camperSlice.reducer;

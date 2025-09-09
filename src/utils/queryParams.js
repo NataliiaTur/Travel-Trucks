@@ -1,28 +1,16 @@
-/**
- * Функція для побудови query параметрів для API запиту
- * @param {Object} filters - об'єкт з фільтрами
- * @param {string} filters.location - локація для пошуку
- * @param {string} filters.bodyType - тип кузова (panelTruck, fullyIntegrated, alcove)
- * @param {Array} filters.features - масив обладнання (AC, kitchen, bathroom, etc.)
- * @param {number} page - номер сторінки для пагінації
- * @returns {Object} об'єкт з параметрами для axios
- */
-
 export const buildQueryParams = (filters, page = 1) => {
   const params = { page };
 
-  // Локація - як є в API
   if (filters.location?.trim()) {
-    params.location = filters.location.trim();
+    const locationParts = filters.location.trim().split(",");
+    const city = locationParts[0].trim();
+    params.location = city;
   }
 
-  // Тип кузова - відповідає полю "form" в API
   if (filters.bodyType) {
-    params.form = filters.bodyType; // panelTruck, fullyIntegrated, alcove
+    params.form = filters.bodyType;
   }
 
-  // Обладнання - кожна опція як окремий boolean параметр
-  // З вашого прикладу: AC, bathroom, kitchen, TV, radio, refrigerator, microwave, gas, water
   filters.features?.forEach((feature) => {
     params[feature] = true;
   });
@@ -30,14 +18,7 @@ export const buildQueryParams = (filters, page = 1) => {
   return params;
 };
 
-/**
- * Функція для валідації фільтрів
- * @param {Object} filters
- * @returns {boolean}
- */
-
 export const validateFilters = (filters) => {
-  // Перевіряємо, чи є хоча б один фільтр
   return (
     filters.location?.trim() ||
     filters.bodyType ||
@@ -45,18 +26,12 @@ export const validateFilters = (filters) => {
   );
 };
 
-/**
- * Доступні типи кузова (відповідають полю "form" в API)
- */
 export const BODY_TYPES = {
   PANEL_TRUCK: "panelTruck",
   FULLY_INTEGRATED: "fullyIntegrated",
   ALCOVE: "alcove",
 };
 
-/**
- * Доступні типи обладнання (відповідають boolean полям в API)
- */
 export const EQUIPMENT_FEATURES = {
   AC: "AC",
   BATHROOM: "bathroom",
@@ -68,3 +43,41 @@ export const EQUIPMENT_FEATURES = {
   GAS: "gas",
   WATER: "water",
 };
+
+export const EQUIPMENT_CONFIG = [
+  { key: EQUIPMENT_FEATURES.AC, label: "AC", icon: "icon-wind" },
+  { key: EQUIPMENT_FEATURES.BATHROOM, label: "Bathroom", icon: "icon-shower" },
+  { key: EQUIPMENT_FEATURES.KITCHEN, label: "Kitchen", icon: "icon-cup-hot" },
+  { key: EQUIPMENT_FEATURES.TV, label: "TV", icon: "icon-tv" },
+  { key: EQUIPMENT_FEATURES.RADIO, label: "Radio", icon: "icon-radios" },
+  {
+    key: EQUIPMENT_FEATURES.REFRIGERATOR,
+    label: "Refrigerator",
+    icon: "icon-fridge",
+  },
+  {
+    key: EQUIPMENT_FEATURES.MICROWAVE,
+    label: "Microwave",
+    icon: "icon-microwave",
+  },
+  { key: EQUIPMENT_FEATURES.GAS, label: "Gas", icon: "icon-gasStove" },
+  { key: EQUIPMENT_FEATURES.WATER, label: "Water", icon: "icon-water" },
+];
+
+export const VEHICLE_TYPES = [
+  {
+    key: BODY_TYPES.PANEL_TRUCK,
+    label: "Van",
+    icon: "icon-van",
+  },
+  {
+    key: BODY_TYPES.FULLY_INTEGRATED,
+    label: "Fully Integrated",
+    icon: "icon-fullyIntegrated",
+  },
+  {
+    key: BODY_TYPES.ALCOVE,
+    label: "Alcove",
+    icon: "icon-alcove",
+  },
+];
