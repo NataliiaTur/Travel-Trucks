@@ -32,10 +32,18 @@
 .camperSmallCardWrapperTitlePrice {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start; /* Додати для вирівнювання */
   margin-bottom: 8px;
   font-weight: 600;
   font-size: 24px;
   line-height: 133%;
+}
+
+/* Новий контейнер для ціни та кнопки favorite */
+.priceAndFavorite {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .camperSmallCardMeta {
@@ -50,6 +58,7 @@
 .smallCardReviews {
   margin-right: 16px;
 }
+
 .camperSmallCardInfoRating {
   font-weight: 400;
   font-size: 16px;
@@ -58,6 +67,37 @@
 .camperSmallCardStar {
   fill: #ffc531;
   margin-right: 4px;
+}
+
+/* Стилі для кнопки favorite */
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+}
+
+/* Стилі для іконки сердечка */
+.heartIcon {
+  stroke: #101828;
+  stroke-width: 1px;
+  transition: all 0.2s ease;
+}
+
+/* Активний стан (обране) */
+.favoriteActive {
+  fill: #e44848;
+  stroke: #e44848;
 }
 
 .smallCardDescription {
@@ -74,4 +114,9 @@
 
 .smallCardButton::hover {
   background-color: #d84343;
+}
+.mapIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
 }

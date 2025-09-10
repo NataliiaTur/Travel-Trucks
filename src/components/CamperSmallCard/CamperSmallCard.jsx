@@ -4,9 +4,19 @@ import Description from "../Description/Description.jsx";
 import FeatureList from "../FeatureList/FeatureList.jsx";
 import Button from "../common/Button/Button.jsx";
 import Icon from "../common/Icon/Icon.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsFavorite } from "../../redux/selectors.js";
+import { toggleFavorite } from "../../redux/favoritesSlice.js";
 
 export const CamperSmallCard = ({ camper, onShowMore }) => {
+  const dispatch = useDispatch();
+  const isFavorite = useSelector(selectIsFavorite(camper.id));
+
   const reviewsCount = camper.reviews ? camper.reviews.length : 0;
+
+  const handleFavoriteToggle = () => {
+    dispatch(toggleFavorite(camper.id));
+  };
   return (
     <div className={css.camperSmallCard}>
       <div className={css.camperSmallCardWrapper}>
@@ -20,8 +30,27 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
           <div className={css.camperSmallCardCamperInfo}>
             <div className={css.camperSmallCardWrapperTitlePrice}>
               <h2 className={css.camperSmallCardName}>{camper.name}</h2>
-              <div className={css.camperSmallCardPrice}>
-                €{camper.price.toFixed(2)}
+
+              <div className={css.priceAndFavorite}>
+                <div className={css.camperSmallCardPrice}>
+                  €{camper.price.toFixed(2)}
+                </div>
+                <button
+                  onClick={handleFavoriteToggle}
+                  className={css.favoriteButton}
+                  aria-label={
+                    isFavorite ? "Remove from favorites" : "Add to favorites"
+                  }
+                >
+                  <Icon
+                    id="icon-heart"
+                    width={24}
+                    height={21}
+                    className={`${css.heartIcon} ${
+                      isFavorite ? css.favoriteActive : ""
+                    }`}
+                  />
+                </button>
               </div>
             </div>
 
@@ -38,7 +67,16 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
                   ({reviewsCount} Reviews)
                 </span>
               </div>
-              <span>📍 {camper.location}</span>
+
+              <span>
+                <Icon
+                  id="icon-map"
+                  width={12}
+                  height={12}
+                  className={css.mapIcon}
+                />
+                {camper.location}
+              </span>
             </div>
             <Description
               text={camper.description}

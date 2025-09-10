@@ -12,7 +12,6 @@ const LocationInput = ({ value, onChange }) => {
     const newValue = event.target.value;
     onChange(newValue);
 
-    // Фільтруємо міста локально
     const filteredCities = filterCities(newValue);
     setSuggestions(filteredCities);
     setIsOpen(filteredCities.length > 0);

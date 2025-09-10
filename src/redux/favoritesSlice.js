@@ -18,8 +18,26 @@ const favoritesSlice = createSlice({
       const camperId = action.payload;
       state.items = state.items.filter((id) => id !== camperId);
     },
+    toggleFavorite: (state, action) => {
+      const camperId = action.payload;
+      const index = state.items.indexOf(camperId);
+
+      if (index === -1) {
+        state.items.push(camperId);
+      } else {
+        state.items.splice(index, 1);
+      }
+    },
+    clearFavorites: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export const {
+  addToFavorites,
+  removeFromFavorites,
+  toggleFavorite,
+  clearFavorites,
+} = favoritesSlice.actions;
 export default favoritesSlice.reducer;
