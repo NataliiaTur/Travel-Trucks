@@ -51,3 +51,104 @@ select {
   padding: 0 64px;
   width: 100%;
 }
+
+._calendarContainer_1gjsl_183 {
+  border: 1px solid #475467 !important;
+  padding: 12px;
+}
+
+.rdp-root .rdp-chevron {
+  fill: #475467 !important;
+}
+
+.rdp-root .rdp-nav_button {
+  background-color: #475467 !important;
+}
+
+.rdp-range_start .rdp-day_button,
+.rdp-range_end .rdp-day_button {
+  background-color: #475467 !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 120% !important;
+}
+
+.rdp-weekdays {
+  margin-bottom: 12px !important;
+  border-bottom: 1px solid #475467 !important;
+  text-transform: capitalize !important;
+}
+.rdp-weekday {
+  text-transform: capitalize !important;
+}
+
+.rdp-caption_label {
+  transform: translateX(70px) !important;
+}
+.rdp-button_previous {
+  transform: translateX(-220px) !important;
+}
+
+.rdp-button_next {
+  transform: translateX(-5px) !important;
+}
+
+/* Стандартний стиль для поточної дати (коли нічого не вибрано) */
+.rdp-today .rdp-day_button {
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+  background-color: gray !important;
+  color: white !important;
+}
+
+/* Коли поточна дата НЕ вибрана, але є інші вибрані дати в календарі */
+.customCalendar:has(.rdp-selected)
+  .rdp-today:not(.rdp-selected)
+  .rdp-day_button {
+  background-color: white !important;
+  color: gray !important;
+  border: 1px solid #ccc; /* опціонально, для кращого вигляду */
+}
+
+/* Стиль для вибраних дат */
+.rdp-selected .rdp-day_button,
+.rdp-range_start .rdp-day_button,
+.rdp-range_end .rdp-day_button {
+  background-color: #475467 !important; /* ваш колір для вибраних дат */
+  color: white !important;
+  border-radius: 32px;
+  width: 36px;
+  height: 32px;
+}
+
+/* Стиль для дат у проміжку між початковою і кінцевою датою */
+.rdp-range_middle .rdp-day_button {
+  background-color: #101828 !important;
+  color: gray !important;
+  border-radius: 0 !important; /* прибираємо заокруглення */
+  width: 36px;
+  height: 32px;
+  border: none !important; /* прибираємо рамки */
+}
+
+/* Опціонально: можна зробити суцільну смугу між датами */
+.rdp-range_middle,
+.rdp-range_start,
+.rdp-range_end {
+  background-color: none !important; /* фон для всього td */
+  background-clip: content-box !important;
+  padding-top: 6px !important; /* відступ зверху */
+  padding-bottom: 6px !important; /* відступ знизу */
+}
+
+.rdp-range_middle .rdp-day_button {
+  background-color: transparent !important; /* прозорий фон кнопки */
+  color: #475467 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 100% !important; /* на всю ширину комірки */
+  height: 22px;
+}

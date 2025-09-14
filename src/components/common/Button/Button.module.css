@@ -23,3 +23,8 @@
 .button:active {
   background-color: #d84343;
 }
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -13,7 +13,7 @@ export function Button({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${css.button} ${className}`}
+      className={`${css.button} ${className} ${disabled ? css.disabled : ""}`}
     >
       {children}
     </button>

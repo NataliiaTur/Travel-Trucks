@@ -30,6 +30,12 @@ function Navigation() {
             >
               Catalog
             </NavLink>
+            <NavLink
+              className={(props) => setActiveClass(props, css.navLinkFavorites)}
+              to="/favorites"
+            >
+              Favorites
+            </NavLink>
           </div>
         </div>
       </div>

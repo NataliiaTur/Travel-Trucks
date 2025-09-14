@@ -30,19 +30,19 @@
 .featureFormField {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
-.featureFormField input {
+.fieldGroup {
   border-radius: 12px;
   padding: 18px;
   width: 100%;
   height: 56px;
   box-sizing: border-box;
   background-color: #f7f7f7;
+  margin-bottom: 14px;
 }
 
-.featureFormField textarea {
+.fieldGroupArea {
   border-radius: 10px;
   padding: 18px;
   width: 100%;
@@ -56,4 +56,70 @@
 .featureButton {
   display: block;
   margin: 0 auto;
+}
+
+.errorInput {
+  border-color: #e74c3c;
+  outline-color: #e74c3c;
+}
+
+.errorText {
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+.dateInputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dateInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #101828;
+  cursor: pointer;
+}
+
+.dateInput::placeholder {
+  color: #6c717b;
+}
+
+.calendarContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  background: white;
+  border: 1px solid #dadde1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+}
+
+.calendarArrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+  z-index: 1001;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
