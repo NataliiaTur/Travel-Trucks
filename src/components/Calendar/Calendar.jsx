@@ -3,7 +3,7 @@ import CustomCaption from "./CustomCaption";
 
 export default function Calendar({ selected, handleDateChange }) {
   const customLabels = {
-    labelDay: (day, modifiers) => {
+    labelDay: (day) => {
       const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
       return dayNames[day.getDay()];
     },

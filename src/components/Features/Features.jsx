@@ -8,13 +8,10 @@ function Features({ camper, onBookingSubmit }) {
 
   return (
     <div className={css.feature}>
-     
       <div className={css.featureDetails}>
-       
         <FeatureList camper={camper} />
 
-      
-        <h4 className={css.featuresTitle}>Vehicle details</h4>
+        <h3 className={css.featuresTitle}>Vehicle details</h3>
         <div className={css.featureVehicleDetails}>
           <div>
             <span>Form: </span>

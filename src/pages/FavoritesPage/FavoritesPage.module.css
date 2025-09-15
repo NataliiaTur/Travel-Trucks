@@ -1,0 +1,35 @@
+.favoritesPage {
+  padding: 48px 0;
+}
+
+.favoritesContent {
+  display: flex;
+  gap: 58px;
+}
+
+.favoritesTitle {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.campersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.emptyFavorites {
+  text-align: center;
+  padding: 64px 20px;
+  color: #6c717b;
+}
+
+.emptyFavorites p {
+  font-size: 18px;
+  margin: 0 0 16px 0;
+}
+
+.emptyFavorites p:last-child {
+  margin-bottom: 0;
+}

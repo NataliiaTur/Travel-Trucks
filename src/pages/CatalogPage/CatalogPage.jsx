@@ -11,9 +11,10 @@ import {
   selectHasMore,
 } from "../../redux/selectors.js";
 import { useEffect } from "react";
-import { fetchCampers, fetchFilteredCampers } from "../../redux/operations.js";
+import { fetchFilteredCampers } from "../../redux/operations.js";
 import Filters from "../../components/Filters/Filters.jsx";
 import Button from "../../components/common/Button/Button.jsx";
+import Loader from "../../components/common/Loader/Loader.jsx";
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ function CatalogPage() {
 
           <div className={css.campersSection}>
             {isLoading && campers.length === 0 ? (
-              <div>Loading...</div>
+              <Loader />
             ) : (
               <>
                 {campers && campers.length > 0 ? (
@@ -84,7 +85,7 @@ function CatalogPage() {
                       disabled={isLoading}
                       className={css.loadMoreButton}
                     >
-                      {isLoading ? "Loading..." : "Load More"}
+                      {isLoading ? <Loader /> : "Load More"}
                     </Button>
                   </div>
                 )}

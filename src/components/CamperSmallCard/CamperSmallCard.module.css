@@ -63,6 +63,7 @@
   font-size: 16px;
   line-height: 150%;
 }
+
 .camperSmallCardStar {
   fill: #ffc531;
   margin-right: 4px;
@@ -112,6 +113,7 @@
 .smallCardButton::hover {
   background-color: #d84343;
 }
+
 .mapIcon {
   width: 16px;
   height: 16px;

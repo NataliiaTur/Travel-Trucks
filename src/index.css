@@ -45,6 +45,26 @@ select {
   outline: none;
 }
 
+h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -151,4 +171,8 @@ select {
   border-radius: 0 !important;
   width: 100% !important; /* на всю ширину комірки */
   height: 22px;
+}
+
+._dateInput_1f71k_141 {
+  color: #6c717b !important;
 }

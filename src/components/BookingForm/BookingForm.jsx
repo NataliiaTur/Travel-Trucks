@@ -165,8 +165,6 @@ function BookingForm({ camperId, onSubmit }) {
         bookingDateTo: selected.to.toISOString().split("T")[0],
       };
 
-      console.log("Booking data with camper ID:", submitData); // для перевірки
-
       await onSubmit(submitData);
 
       setFormData({

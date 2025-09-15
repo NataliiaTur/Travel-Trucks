@@ -1,0 +1,38 @@
+.notFoundPage {
+  padding-top: 40px;
+}
+
+.redirectInfo {
+  margin: 24px 0;
+  padding: 16px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+}
+
+.redirectText {
+  font-size: 16px;
+  color: #6c717b;
+  margin: 0;
+}
+
+.countdown {
+  font-weight: 600;
+  color: #475467;
+  font-size: 18px;
+}
+
+.cancelButton {
+  color: #6c717b;
+  text-decoration: underline;
+  display: flex;
+  gap: 20px;
+}
+
+.cancelButton:hover {
+  color: #475467;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+}

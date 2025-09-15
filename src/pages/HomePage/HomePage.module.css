@@ -12,12 +12,11 @@
 }
 
 .homeTitle {
-  font-size: 48px;
-  font-weight: 600;
   color: #f7f7f7;
   line-height: 0.66667;
   margin-bottom: 16px;
 }
+
 .homeText {
   font-weight: 600;
   font-size: 24px;
