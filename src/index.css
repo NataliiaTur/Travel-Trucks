@@ -99,16 +99,17 @@ h4 {
   margin-bottom: 12px !important;
   border-bottom: 1px solid #475467 !important;
   text-transform: capitalize !important;
+  margin: 0 auto;
 }
 .rdp-weekday {
   text-transform: capitalize !important;
 }
 
 .rdp-caption_label {
-  transform: translateX(70px) !important;
+  transform: translateX(85px) !important;
 }
 .rdp-button_previous {
-  transform: translateX(-220px) !important;
+  transform: translateX(-230px) !important;
 }
 
 .rdp-button_next {
@@ -169,6 +170,7 @@ h4 {
 }
 
 ._dateInput_1f71k_141,
-._dateInput_47ho4_139 {
+._dateInput_47ho4_139,
+._dateInput_11804_70 {
   color: #6c717b !important;
 }
