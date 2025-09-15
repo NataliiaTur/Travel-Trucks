@@ -12,6 +12,17 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
   const dispatch = useDispatch();
   const isFavorite = useSelector(selectIsFavorite(camper.id));
 
+  const formatLocation = (location) => {
+    if (!location) return "";
+
+    // Розділяємо по комі та переставляємо місцями
+    const parts = location.split(", ");
+    if (parts.length === 2) {
+      return `${parts[1]}, ${parts[0]}`; // з "Ukraine, Kyiv" робимо "Kyiv, Ukraine"
+    }
+    return location; // якщо формат інший, повертаємо як є
+  };
+
   const reviewsCount = camper.reviews ? camper.reviews.length : 0;
 
   const handleFavoriteToggle = () => {
@@ -75,7 +86,7 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
                   height={12}
                   className={css.mapIcon}
                 />
-                {camper.location}
+                {formatLocation(camper.location)}
               </span>
             </div>
             <Description

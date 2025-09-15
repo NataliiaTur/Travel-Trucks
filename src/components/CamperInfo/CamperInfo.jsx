@@ -8,6 +8,17 @@ function CamperInfo({ camper, showPrice }) {
     return `€${price.toFixed(2)}`;
   };
 
+  const formatLocation = (location) => {
+    if (!location) return "";
+
+    // Розділяємо по комі та переставляємо місцями
+    const parts = location.split(", ");
+    if (parts.length === 2) {
+      return `${parts[1]}, ${parts[0]}`; // з "Ukraine, Kyiv" робимо "Kyiv, Ukraine"
+    }
+    return location; // якщо формат інший, повертаємо як є
+  };
+
   const reviewsCount = camper.reviews ? camper.reviews.length : 0;
 
   return (
@@ -29,12 +40,12 @@ function CamperInfo({ camper, showPrice }) {
 
           <div className={css.camperInfoLocation}>
             <Icon
-              id={"icon-city-map-black"}
-              width={20}
-              height={20}
+              id={"icon-map"}
+              width={16}
+              height={16}
               className={css.camperInfoMap}
             />
-            <span>{camper.location}</span>
+            <span>{formatLocation(camper.location)}</span>
           </div>
         </div>
 
