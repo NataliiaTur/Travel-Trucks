@@ -1,4 +1,3 @@
-// src/components/Filters/VehicleEquipment/VehicleEquipment.jsx
 import { EQUIPMENT_CONFIG } from "../../../utils/queryParams.js";
 import Icon from "../../common/Icon/Icon.jsx";
 import css from "./VehicleEquipment.module.css";

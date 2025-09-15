@@ -1,4 +1,3 @@
-// src/components/Filters/LocationInput/LocationInput.jsx
 import { useState } from "react";
 import { filterCities } from "../../../utils/cities.js";
 import Icon from "../../common/Icon/Icon.jsx";

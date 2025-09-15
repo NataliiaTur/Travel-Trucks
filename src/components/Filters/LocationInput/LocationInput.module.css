@@ -6,7 +6,7 @@
   gap: 8px;
   margin-bottom: 40px;
 
-  position: relative; /* Для dropdown */
+  position: relative;
 }
 
 .locationLabel {
@@ -37,7 +37,6 @@
   margin-right: 8px;
 }
 
-/* Стилі для dropdown */
 .suggestionsDropdown {
   position: absolute;
   top: 100%;

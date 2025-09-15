@@ -115,7 +115,6 @@ h4 {
   transform: translateX(-5px) !important;
 }
 
-/* Стандартний стиль для поточної дати (коли нічого не вибрано) */
 .rdp-today .rdp-day_button {
   border-radius: 32px;
   width: 36px;
@@ -124,55 +123,52 @@ h4 {
   color: white !important;
 }
 
-/* Коли поточна дата НЕ вибрана, але є інші вибрані дати в календарі */
 .customCalendar:has(.rdp-selected)
   .rdp-today:not(.rdp-selected)
   .rdp-day_button {
   background-color: white !important;
   color: gray !important;
-  border: 1px solid #ccc; /* опціонально, для кращого вигляду */
+  border: 1px solid #ccc;
 }
 
-/* Стиль для вибраних дат */
 .rdp-selected .rdp-day_button,
 .rdp-range_start .rdp-day_button,
 .rdp-range_end .rdp-day_button {
-  background-color: #475467 !important; /* ваш колір для вибраних дат */
+  background-color: #475467 !important;
   color: white !important;
   border-radius: 32px;
   width: 36px;
   height: 32px;
 }
 
-/* Стиль для дат у проміжку між початковою і кінцевою датою */
 .rdp-range_middle .rdp-day_button {
   background-color: #101828 !important;
   color: gray !important;
-  border-radius: 0 !important; /* прибираємо заокруглення */
+  border-radius: 0 !important;
   width: 36px;
   height: 32px;
-  border: none !important; /* прибираємо рамки */
+  border: none !important;
 }
 
-/* Опціонально: можна зробити суцільну смугу між датами */
 .rdp-range_middle,
 .rdp-range_start,
 .rdp-range_end {
-  background-color: none !important; /* фон для всього td */
+  background-color: none !important;
   background-clip: content-box !important;
-  padding-top: 6px !important; /* відступ зверху */
-  padding-bottom: 6px !important; /* відступ знизу */
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
 }
 
 .rdp-range_middle .rdp-day_button {
-  background-color: transparent !important; /* прозорий фон кнопки */
+  background-color: transparent !important;
   color: #475467 !important;
   border: none !important;
   border-radius: 0 !important;
-  width: 100% !important; /* на всю ширину комірки */
+  width: 100% !important;
   height: 22px;
 }
 
-._dateInput_1f71k_141 {
+._dateInput_1f71k_141,
+._dateInput_47ho4_139 {
   color: #6c717b !important;
 }

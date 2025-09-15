@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import css from "./NotFoundPage.module.css";
 import Button from "../../components/common/Button/Button";
-import sprite from "../../../public/icons.svg";
 
 function NotFoundPage() {
   const navigate = useNavigate();

@@ -1,4 +1,3 @@
-// src/components/Features/Features.jsx
 import FeatureList from "../FeatureList/FeatureList";
 import BookingForm from "../BookingForm/BookingForm";
 import css from "./Features.module.css";

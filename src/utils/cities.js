@@ -28,7 +28,6 @@ export const CITIES_DATABASE = [
   "Lutsk, Ukraine",
   "Uzhhorod, Ukraine",
 
-  // Європейські міста
   "Berlin, Germany",
   "Munich, Germany",
   "Hamburg, Germany",

@@ -19,7 +19,7 @@ export default function Calendar({ selected, handleDateChange }) {
         Caption: CustomCaption,
       }}
       labels={customLabels}
-      weekStartsOn={1} // початок тижня з понеділка
+      weekStartsOn={1}
       formatters={{
         formatWeekdayName: (day) => {
           const dayNames = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];

@@ -48,7 +48,6 @@
 .camperSmallCardMeta {
   display: flex;
   margin-bottom: 24px;
-
   font-weight: 900;
   font-size: 16px;
   line-height: 150%;
@@ -69,7 +68,6 @@
   margin-right: 4px;
 }
 
-/* Стилі для кнопки favorite */
 .favoriteButton {
   background: none;
   border: none;
