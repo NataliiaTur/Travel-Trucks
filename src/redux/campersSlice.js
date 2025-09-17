@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  fetchCamperById,
-  fetchCampers,
-  fetchFilteredCampers,
-} from "../redux/operations.js";
+import { fetchCamperById, fetchCampers } from "../redux/operations.js";
 
 const initialState = {
   items: [],
@@ -74,8 +70,18 @@ const camperSlice = createSlice({
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload.items || action.payload;
+        const { data, isLoadMore, page } = action.payload;
+
+        if (isLoadMore) {
+          state.items = [...state.items, ...data];
+          state.page = page;
+        } else {
+          state.items = data;
+          state.page = 1;
+        }
+        state.hasMore = data.length === 4;
       })
+
       .addCase(fetchCampers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
@@ -90,29 +96,6 @@ const camperSlice = createSlice({
         state.currentCamper = action.payload;
       })
       .addCase(fetchCamperById.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-
-      .addCase(fetchFilteredCampers.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
-        state.isLoading = false;
-        const { data, isLoadMore, page } = action.payload;
-
-        if (isLoadMore) {
-          state.items = [...state.items, ...data];
-          state.page = page;
-        } else {
-          state.items = data;
-          state.page = 1;
-        }
-
-        state.hasMore = data.length === 4;
-      })
-      .addCase(fetchFilteredCampers.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });

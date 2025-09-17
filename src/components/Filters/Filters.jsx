@@ -6,7 +6,7 @@ import {
   setLocationFilter,
   toggleFeatureFilter,
 } from "../../redux/campersSlice.js";
-import { fetchFilteredCampers } from "../../redux/operations.js";
+import { fetchCampers } from "../../redux/operations.js";
 import { Button } from "../common/Button/Button.jsx";
 import LocationInput from "./LocationInput/LocationInput.jsx";
 import VehicleEquipment from "./VehicleEquipment/VehicleEquipment.jsx";
@@ -32,7 +32,7 @@ const Filters = () => {
     event.preventDefault();
 
     dispatch(
-      fetchFilteredCampers({
+      fetchCampers({
         filters,
         page: 1,
         isLoadMore: false,

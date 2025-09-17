@@ -5,12 +5,36 @@ import { buildQueryParams } from "../utils/queryParams.js";
 
 export const fetchCampers = createAsyncThunk(
   "campers/fetchCampers",
-  async (params = {}, thunkAPI) => {
+  async (
+    {
+      filters = { location: "", bodyType: "", features: [] },
+      page = 1,
+      isLoadMore = false,
+    } = {},
+    { dispatch, rejectWithValue }
+  ) => {
     try {
+      if (!isLoadMore) {
+        dispatch(clearCampers());
+        dispatch(resetPagination());
+      }
+
+      const params = buildQueryParams(filters, page);
       const response = await campersApi.getCampers(params);
-      return response.data;
+
+      const data = Array.isArray(response.data)
+        ? response.data
+        : response.data.items || [];
+
+      return {
+        data,
+        isLoadMore,
+        hasMore: data.length > 0,
+        page: isLoadMore ? page : 1,
+      };
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      console.error("Fetch campers error:", error);
+      return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
@@ -27,35 +51,35 @@ export const fetchCamperById = createAsyncThunk(
   }
 );
 
-export const fetchFilteredCampers = createAsyncThunk(
-  "campers/fetchFiltered",
-  async (
-    { filters, page = 1, isLoadMore = false },
-    { dispatch, rejectWithValue }
-  ) => {
-    try {
-      if (!isLoadMore) {
-        dispatch(clearCampers());
-        dispatch(resetPagination());
-      }
+// export const fetchFilteredCampers = createAsyncThunk(
+//   "campers/fetchFiltered",
+//   async (
+//     { filters, page = 1, isLoadMore = false },
+//     { dispatch, rejectWithValue }
+//   ) => {
+//     try {
+//       if (!isLoadMore) {
+//         dispatch(clearCampers());
+//         dispatch(resetPagination());
+//       }
 
-      const params = buildQueryParams(filters, page);
+//       const params = buildQueryParams(filters, page);
 
-      const response = await campersApi.getCampers(params);
+//       const response = await campersApi.getCampers(params);
 
-      const data = Array.isArray(response.data)
-        ? response.data
-        : response.data.items || [];
+//       const data = Array.isArray(response.data)
+//         ? response.data
+//         : response.data.items || [];
 
-      return {
-        data,
-        isLoadMore,
-        hasMore: data.length > 0,
-        page: isLoadMore ? page : 1,
-      };
-    } catch (error) {
-      console.error("Fetch filtered campers error:", error);
-      return rejectWithValue(error.response?.data?.message || error.message);
-    }
-  }
-);
+//       return {
+//         data,
+//         isLoadMore,
+//         hasMore: data.length > 0,
+//         page: isLoadMore ? page : 1,
+//       };
+//     } catch (error) {
+//       console.error("Fetch filtered campers error:", error);
+//       return rejectWithValue(error.response?.data?.message || error.message);
+//     }
+//   }
+// );

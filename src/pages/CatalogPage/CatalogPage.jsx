@@ -11,7 +11,7 @@ import {
   selectHasMore,
 } from "../../redux/selectors.js";
 import { useEffect } from "react";
-import { fetchFilteredCampers } from "../../redux/operations.js";
+import { fetchCampers } from "../../redux/operations.js";
 import Filters from "../../components/Filters/Filters.jsx";
 import Button from "../../components/common/Button/Button.jsx";
 import Loader from "../../components/common/Loader/Loader.jsx";
@@ -28,13 +28,7 @@ function CatalogPage() {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    dispatch(
-      fetchFilteredCampers({
-        filters: { location: "", bodyType: "", features: [] },
-        page: 1,
-        isLoadMore: false,
-      })
-    );
+    dispatch(fetchCampers());
   }, [dispatch]);
 
   const handleShowMore = (camperId) => {
@@ -43,7 +37,7 @@ function CatalogPage() {
 
   const handleLoadMore = () => {
     dispatch(
-      fetchFilteredCampers({
+      fetchCampers({
         filters,
         page: currentPage + 1,
         isLoadMore: true,
