@@ -108,7 +108,12 @@
   margin-bottom: 24px !important;
 }
 
-.smallCardButton::hover {
+.smallCardButton {
+  background-color: #e44848;
+}
+
+.smallCardButton:hover,
+.smallCardButton:active {
   background-color: #d84343;
 }
 

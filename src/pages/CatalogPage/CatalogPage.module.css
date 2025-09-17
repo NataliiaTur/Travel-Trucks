@@ -32,6 +32,6 @@
   border: 1px solid #dadde1 !important;
 }
 
-.loadMoreButton::hover {
+.loadMoreButton:hover {
   border: 1px solid #d84343 !important;
 }

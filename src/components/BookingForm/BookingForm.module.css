@@ -53,6 +53,12 @@
 .featureButton {
   display: block;
   margin: 0 auto;
+  background-color: #e44848;
+}
+
+.featureButton:hover,
+.featureButton:active {
+  background-color: #d84343;
 }
 
 .errorInput {
