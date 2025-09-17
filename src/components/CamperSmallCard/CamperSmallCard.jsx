@@ -15,12 +15,11 @@ export const CamperSmallCard = ({ camper, onShowMore }) => {
   const formatLocation = (location) => {
     if (!location) return "";
 
-    // Розділяємо по комі та переставляємо місцями
     const parts = location.split(", ");
     if (parts.length === 2) {
-      return `${parts[1]}, ${parts[0]}`; // з "Ukraine, Kyiv" робимо "Kyiv, Ukraine"
+      return `${parts[1]}, ${parts[0]}`;
     }
-    return location; // якщо формат інший, повертаємо як є
+    return location;
   };
 
   const reviewsCount = camper.reviews ? camper.reviews.length : 0;

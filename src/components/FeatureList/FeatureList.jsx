@@ -14,9 +14,9 @@ function FeatureList({ camper, className }) {
     }));
 
   return (
-    <div className={clsx(css.featureList, className)}>
+    <ul className={clsx(css.featureList, className)}>
       {availableFeatures.map((feature) => (
-        <div key={feature.key} className={css.featureItem}>
+        <li key={feature.key} className={css.featureItem}>
           <Icon
             id={feature.icon}
             width={20}
@@ -24,9 +24,9 @@ function FeatureList({ camper, className }) {
             className={css.featureIcon}
           />
           <span>{feature.label}</span>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

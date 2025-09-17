@@ -51,10 +51,6 @@ function CatalogPage() {
     );
   };
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
     <section className={css.catalogPage}>
       <div className="container">
@@ -62,7 +58,12 @@ function CatalogPage() {
           <Filters />
 
           <div className={css.campersSection}>
-            {isLoading && campers.length === 0 ? (
+            {error ? (
+              <div className={css.noResults}>
+                <h3>No campers found</h3>
+                <p>Try adjusting your search filters to find more options.</p>
+              </div>
+            ) : isLoading && campers.length === 0 ? (
               <Loader />
             ) : (
               <>
@@ -75,7 +76,10 @@ function CatalogPage() {
                     />
                   ))
                 ) : (
-                  <div> No campers found </div>
+                  <div className={css.noResults}>
+                    <h3>No campers found</h3>
+                    <p>Try adjusting your search filters.</p>
+                  </div>
                 )}
 
                 {hasMore && (
