@@ -4,6 +4,7 @@ import "react-day-picker/style.css";
 import css from "./BookingForm.module.css";
 import Button from "../../components/common/Button/Button.jsx";
 import Calendar from "../Calendar/Calendar.jsx";
+import { toast } from "react-toastify";
 
 function BookingForm({ camperId, onSubmit }) {
   const [formData, setFormData] = useState({
@@ -127,18 +128,14 @@ function BookingForm({ camperId, onSubmit }) {
       });
     };
 
-    // Якщо вибрана тільки початкова дата
     if (range.from && !range.to) {
       return formatDate(range.from);
     }
 
-    // Якщо вибрані обидві дати
     if (range.from && range.to) {
-      // Якщо початкова і кінцева дати однакові
       if (range.from.getTime() === range.to.getTime()) {
         return formatDate(range.from);
       }
-      // Якщо різні дати - показуємо діапазон
       return `${formatDate(range.from)} - ${formatDate(range.to)}`;
     }
 
@@ -167,6 +164,11 @@ function BookingForm({ camperId, onSubmit }) {
 
       await onSubmit(submitData);
 
+      toast.success("Booking confirmed! We will contact you soon.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+
       setFormData({
         name: "",
         email: "",
@@ -176,7 +178,7 @@ function BookingForm({ camperId, onSubmit }) {
       setErrors({});
       setIsCalendarOpen(false);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      toast.error("Booking failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

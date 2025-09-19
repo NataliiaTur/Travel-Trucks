@@ -15,6 +15,7 @@ import { fetchCampers } from "../../redux/operations.js";
 import Filters from "../../components/Filters/Filters.jsx";
 import Button from "../../components/common/Button/Button.jsx";
 import Loader from "../../components/common/Loader/Loader.jsx";
+import { clearFilters } from "../../redux/campersSlice.js";
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ function CatalogPage() {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
+    dispatch(clearFilters());
     dispatch(fetchCampers());
   }, [dispatch]);
 
