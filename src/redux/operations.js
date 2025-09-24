@@ -22,15 +22,11 @@ export const fetchCampers = createAsyncThunk(
       const params = buildQueryParams(filters, page);
       const response = await campersApi.getCampers(params);
 
-      const data = Array.isArray(response.data)
-        ? response.data
-        : response.data.items || [];
-
       return {
-        data,
+        data: response.data.data,
         isLoadMore,
-        hasMore: data.length > 0,
-        page: isLoadMore ? page : 1,
+        hasMore: response.data.hasMore,
+        page: response.data.page,
       };
     } catch (error) {
       console.error("Fetch campers error:", error);
