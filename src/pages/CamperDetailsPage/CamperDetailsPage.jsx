@@ -38,10 +38,6 @@ function CamperDetailsPage() {
     }
   }, [error, navigate]);
 
-  console.log("Current camper:", currentCamper);
-  console.log("Reviews:", currentCamper?.reviews);
-  console.log("Active tab:", activeTab);
-
   if (error && !error.includes("404")) {
     return <div>Error: {error}</div>;
   }
@@ -74,19 +70,6 @@ function CamperDetailsPage() {
             />
           )}
         </Tabs>
-
-        {activeTab === "reviews" && (
-          <div>
-            <p style={{ color: "red", fontSize: "20px" }}>
-              Reviews tab is active
-            </p>
-            <p>Reviews count: {currentCamper?.reviews?.length || 0}</p>
-            <Reviews
-              camper={currentCamper}
-              onBookingSubmit={handleBookingSubmit}
-            />
-          </div>
-        )}
       </div>
     </section>
   );
