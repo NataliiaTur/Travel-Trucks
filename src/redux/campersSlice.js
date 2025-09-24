@@ -70,7 +70,9 @@ const camperSlice = createSlice({
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { data, isLoadMore, page } = action.payload;
+
+        const data = action.payload.data || action.payload.campers || [];
+        const { isLoadMore, page } = action.payload;
 
         if (isLoadMore) {
           state.items = [...state.items, ...data];
