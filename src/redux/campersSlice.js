@@ -95,7 +95,7 @@ const camperSlice = createSlice({
       })
       .addCase(fetchCamperById.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.currentCamper = action.payload;
+        state.currentCamper = action.payload.data;
       })
       .addCase(fetchCamperById.rejected, (state, action) => {
         state.isLoading = false;

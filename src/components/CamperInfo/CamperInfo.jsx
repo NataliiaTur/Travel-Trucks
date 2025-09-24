@@ -5,7 +5,7 @@ function CamperInfo({ camper, showPrice }) {
   if (!camper) return null;
 
   const formatPrice = (price) => {
-    return `€${price.toFixed(2)}`;
+    return `€${Number(price || 0).toFixed(2)}`;
   };
 
   const formatLocation = (location) => {
